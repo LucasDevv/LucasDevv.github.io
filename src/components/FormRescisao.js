@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { TextField, Box, InputLabel, MenuItem, Select, SelectChangeEvent, FormControl, Checkbox, FormControlLabel, Button } from '@mui/material';
 
+const getToday = () => new Date().toISOString().split('T')[0];
 
 function FormRescisao({ onCalculate }) {
   const [formData, setFormData] = useState({
     salarioBruto: '',
-    dataAdmissao: '',
-    dataDemissao: '',
+    dataAdmissao: getToday(),
+    dataDemissao: getToday(),
     motivo: 'semJustaCausa',
     avisoPrevio: 'trabalhado',
     feriasVencidas: false,
