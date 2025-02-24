@@ -1,6 +1,7 @@
 import React from 'react';
+import { formatBRL } from '../utils/format';
 
-function Tabela({ title, columns, rows }) {
+function Table({ title, columns, rows }) {
   return (
     <div className="tabela">
       <h3>{title}</h3>
@@ -16,7 +17,9 @@ function Tabela({ title, columns, rows }) {
           {rows.map((row, rowIndex) => (
             <tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
-                <td key={cellIndex}>{cell}</td>
+                <td key={cellIndex}>
+                  {typeof cell === 'number' ? formatBRL(cell) : cell}
+                </td>
               ))}
             </tr>
           ))}
@@ -26,4 +29,4 @@ function Tabela({ title, columns, rows }) {
   );
 }
 
-export default Tabela;
+export default Table;

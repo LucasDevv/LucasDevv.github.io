@@ -1,8 +1,13 @@
+.Root {
+  isolation: isolate;
+}
+
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: rgb(28, 23, 49);
   margin: 0;
   padding: 0;
+  font-family: 'Roboto', sans-serif;
 }
 
 .App {
@@ -16,10 +21,17 @@ header {
   margin-bottom: 20px;
 }
 
+.App h1 {
+  color: #FFFF;
+  font-weight: bold;
+  font-size: 58px;
+  font-family: 'Roboto', sans-serif;
+}
+
 form.form-rescisao {
   background: #fff;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 34px;
+  border-radius: 16px;
   margin-bottom: 20px;
 }
 
@@ -33,11 +45,13 @@ form.form-rescisao label {
   font-weight: bold;
 }
 
-form.form-rescisao input,
+form.form-rescisao TextField,
 form.form-rescisao select {
   width: 100%;
-  padding: 8px;
-  box-sizing: border-box;
+}
+
+.text-field {
+  width: 100%;
 }
 
 form.form-rescisao button {
@@ -47,6 +61,12 @@ form.form-rescisao button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.button-container{
+  display: flex;
+  align-items: center;
+  justify-content: end;
 }
 
 form.form-rescisao button:hover {
@@ -62,7 +82,7 @@ form.form-rescisao button:hover {
 .summary {
   background: #fff;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 16px;
   margin-bottom: 20px;
 }
 
@@ -82,7 +102,7 @@ form.form-rescisao button:hover {
 .tabela {
   background: #fff;
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 16px;
   margin-bottom: 20px;
 }
 

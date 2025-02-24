@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { TextField, Box, InputLabel, MenuItem, Select, SelectChangeEvent, FormControl, Checkbox, FormControlLabel, Button } from '@mui/material';
+
 
 function FormRescisao({ onCalculate }) {
   const [formData, setFormData] = useState({
@@ -38,82 +40,146 @@ function FormRescisao({ onCalculate }) {
   return (
     <form onSubmit={handleSubmit} className="form-rescisao">
       <div>
-        <label>Salário Bruto (R$):</label>
-        <input
-          type="number"
+        <TextField 
+          className="text-field"
           name="salarioBruto"
+          id="salarioBruto" 
+          label="Sálario Bruto" 
+          variant="outlined" 
+          type="number"
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
           value={formData.salarioBruto}
           onChange={handleChange}
           required
         />
       </div>
       <div>
-        <label>Data de Admissão:</label>
-        <input
-          type="date"
+        <TextField 
           name="dataAdmissao"
+          className="text-field"
+          id="dataAdmissao" 
+          label="Data de Admissão" 
+          variant="outlined" 
+          type="date"
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
           value={formData.dataAdmissao}
           onChange={handleChange}
           required
         />
       </div>
       <div>
-        <label>Data de Demissão:</label>
-        <input
-          type="date"
+        <TextField 
+          className="text-field"
           name="dataDemissao"
+          id="dataDemissao" 
+          label="Data de Demissão" 
+          variant="outlined" 
+          type="date"
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
           value={formData.dataDemissao}
           onChange={handleChange}
           required
         />
       </div>
       <div>
-        <label>Motivo da Rescisão:</label>
-        <select name="motivo" value={formData.motivo} onChange={handleChange}>
-          <option value="semJustaCausa">Sem Justa Causa</option>
-          <option value="comJustaCausa">Com Justa Causa</option>
-          <option value="pedidoDemissao">Pedido de Demissão</option>
-          <option value="rescisaoIndireta">Rescisão Indireta</option>
-          <option value="comumAcordo">Comum Acordo</option>
-        </select>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel id="motivo-label">Motivo da Rescisão</InputLabel>
+            <Select
+              labelId="motivo-label"
+              name="motivo"
+              id="motivo"
+              value={formData.motivo}
+              label="Motivo da Rescisão"
+              onChange={handleChange}
+            >
+              <MenuItem value="semJustaCausa">Sem Justa Causa</MenuItem>
+              <MenuItem value="comJustaCausa">Com Justa Causa</MenuItem>
+              <MenuItem value="pedidoDemissao">Pedido de Demissão</MenuItem>
+              <MenuItem value="rescisaoIndireta">Rescisão Indireta</MenuItem>
+              <MenuItem value="comumAcordo">Comum Acordo</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
       </div>
       <div>
-        <label>Aviso Prévio:</label>
-        <select name="avisoPrevio" value={formData.avisoPrevio} onChange={handleChange}>
-          <option value="trabalhado">Trabalhado</option>
-          <option value="indenizado">Indenizado</option>
-          <option value="dispensado">Dispensado</option>
-        </select>
+        <Box sx={{ minWidth: 120 }}>
+          <FormControl fullWidth>
+            <InputLabel id="avisoPrevio-label">Aviso Prévio</InputLabel>
+            <Select
+              labelId="avisoPrevio-label"
+              name="avisoPrevio"
+              id="avisoPrevio"
+              value={formData.avisoPrevio}
+              label="Aviso Prévio"
+              onChange={handleChange}
+            >
+              <MenuItem value="trabalhado">Trabalhado</MenuItem>
+              <MenuItem value="indenizado">Indenizado</MenuItem>
+              <MenuItem value="dispensado">Dispensado</MenuItem>
+            </Select>
+          </FormControl>
+        </Box>
       </div>
       <div>
-        <label>Férias Vencidas:</label>
-        <input
-          type="checkbox"
-          name="feriasVencidas"
-          checked={formData.feriasVencidas}
-          onChange={handleChange}
-        />
+        <FormControlLabel 
+          control={
+            <Checkbox 
+              name="feriasVencidas"
+              checked={formData.feriasVencidas}
+              onChange={handleChange}
+            />} label="Férias Vencidas" />
       </div>
       <div>
-        <label>Meses de Férias Proporcionais:</label>
-        <input
-          type="number"
+        <TextField 
+          className="text-field"
           name="mesesFeriasProporcionais"
+          id="mesesFeriasProporcionais" 
+          label="Meses de Férias Proporcionais" 
+          variant="outlined" 
+          type="number"
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
           value={formData.mesesFeriasProporcionais}
           onChange={handleChange}
-          min="0"
+          required
         />
       </div>
       <div>
-        <label>Saldo de FGTS (opcional):</label>
-        <input
-          type="number"
+        <TextField 
+          className="text-field"
           name="saldoFGTS"
+          id="saldoFGTS" 
+          label="Saldo de FGTS (opcional)" 
+          variant="outlined" 
+          type="number"
+          slotProps={{
+            inputLabel: {
+              shrink: true,
+            },
+          }}
           value={formData.saldoFGTS}
           onChange={handleChange}
         />
       </div>
-      <button type="submit">Calcular</button>
+      <div className='button-container'>
+        <Button type="submit" variant="contained">Calcular</Button>
+      </div>
     </form>
   );
 }
