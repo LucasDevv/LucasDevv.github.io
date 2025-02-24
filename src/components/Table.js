@@ -18,7 +18,7 @@ function Table({ title, columns, rows }) {
             <tr key={rowIndex}>
               {row.map((cell, cellIndex) => (
                 <td key={cellIndex}>
-                  {typeof cell === 'number' ? formatBRL(cell) : cell}
+                  {cell}
                 </td>
               ))}
             </tr>
